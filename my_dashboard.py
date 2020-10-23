@@ -6,6 +6,7 @@ from dash.dependencies import Input, Output
 from datetime import date
 import datetime
 import flask
+import os
 
 server = flask.Flask(__name__)
 app = dash.Dash(__name__, server=server)
@@ -100,4 +101,4 @@ def populate_fields(chosen_country, start_date, end_date):
 
 
 if __name__ == '__main__': 
-    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+    app.run_server(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
