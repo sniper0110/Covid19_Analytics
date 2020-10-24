@@ -8,8 +8,8 @@ import datetime
 import flask
 import os
 
-server = flask.Flask(__name__)
-app = dash.Dash(__name__, server=server)
+flask_app = flask.Flask(__name__)
+app = dash.Dash(__name__, server=flask_app)
 #app = dash.Dash()
 
 # Loading data (source : https://data.europa.eu/euodp/en/data/dataset/covid-19-coronavirus-data)
@@ -101,4 +101,4 @@ def populate_fields(chosen_country, start_date, end_date):
 
 
 if __name__ == '__main__': 
-    app.run_server(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
+    flask_app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
